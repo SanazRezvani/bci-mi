@@ -35,7 +35,7 @@ config.visualise_csp = true;
 ## EEG Channel Layout
 ![Channel Layout](results/channel_layout.png)
 
-## ⚙️ Pipeline Overview
+## Pipeline Overview
 
 ### 1. Frequency Filtering
 
@@ -94,7 +94,7 @@ Three classifiers are implemented:
 - K-Nearest Neighbors (KNN)
 - Linear Discriminant Analysis (LDA)
 
-## 📊 Results
+## Results
 ### Accuracy Comparison
 | Classifier | Accuracy |
 |-----------|----------|
