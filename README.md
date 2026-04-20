@@ -4,7 +4,7 @@ A complete MATLAB pipeline for **EEG-based motor imagery classification** using 
 
 This work is based on **BCI Competition III – Dataset IVa**.
 
----
+
 
 ## 📌 Project Overview
 
@@ -12,11 +12,9 @@ This project implements a full Brain-Computer Interface (BCI) pipeline to classi
 
 The objective is to transform raw EEG signals into discriminative features and evaluate multiple classifiers.
 
----
+
 
 ## ⚙️ Pipeline Overview
-
-## 🧩 Key Components
 
 ### 1. Frequency Filtering
 
@@ -49,7 +47,7 @@ Implemented in:
 
 CSP finds spatial filters that maximize variance differences between classes.
 
-👉 The animation below shows:
+The animation below shows:
 
 - Raw EEG → mixed distributions
 - After CSP → separable structure
@@ -84,7 +82,7 @@ Three classifiers are implemented:
 ![Accuracy Comparison](results/accuracy_comparison.png)
 
 
-## 🧠 Key Insights
+## Key Insights
 - KNN achieved the best performance (77.94%), suggesting:
    - The feature space is locally well-structured
    - CSP features cluster effectively
@@ -95,20 +93,20 @@ Three classifiers are implemented:
    - Limited feature dimensionality
    - No kernel tuning (baseline setup)
  
-## 📍 EEG Channel Layout
+## EEG Channel Layout
 ![Channel Layout](results/channel_layout.png)
 
-## ⏱️ Time Domain Signals
+## Time Domain Signals
 ![Time Domain Signals](results/time_domain_signals.png)
 
-## ▶️ How to Run
+## How to Run
 ### 1- Place dataset file:
 ` data_set_IVa_al.mat `
 ### 2- Open MATLAB
 ### 3- Run:
 ` run_pipeline `
 
-## ⚙️ Configuration
+## Configuration
 Inside `run_pipeline.m`, you can modify:
 ``` 
 config.frequency_band = 'mu';
