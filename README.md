@@ -1,18 +1,39 @@
-# 🧠 EEG Motor Imagery Classification using CSP (MATLAB)
+# EEG Motor Imagery Classification using CSP (MATLAB)
 
 A complete MATLAB pipeline for **EEG-based motor imagery classification** using signal processing, Common Spatial Patterns (CSP), and machine learning.
 
 This work is based on **BCI Competition III – Dataset IVa**.
 
-
-
-## 📌 Project Overview
-
 This project implements a full Brain-Computer Interface (BCI) pipeline to classify **motor imagery EEG signals** (Right Hand vs Foot).
 
 The objective is to transform raw EEG signals into discriminative features and evaluate multiple classifiers.
 
+---
+## How to Run
+1- Place dataset file: ` data_set_IVa_al.mat `
 
+2- Open MATLAB
+
+3- Run: ` run_pipeline `
+
+
+---
+
+## Configuration
+Inside `run_pipeline.m`, you can modify:
+``` 
+config.dataset_path = 'data_set_IVa_al.mat';
+config.frequency_band = 'mu';        % options: 'mu', 'mu_beta', 'mu_beta_gamma'
+config.spatial_filter = 'CAR';       % options: 'CAR', 'Low Laplacian', 'High Laplacian'
+config.filter_order = 3;
+config.train_ratio = 0.70;
+config.num_csp_pairs = 1;
+config.trial_length_s = 3.5;
+config.plot_figures = true;
+config.visualise_csp = true;
+```
+## EEG Channel Layout
+![Channel Layout](results/channel_layout.png)
 
 ## ⚙️ Pipeline Overview
 
@@ -22,8 +43,12 @@ Band-pass filtering isolates motor-related rhythms:
 
 - μ band: 8–13 Hz
 - β band: 13–30 Hz
-- γ band: 13–49.9 Hz
+- γ band: 13–49.9 Hz     (Limited by Nyquist when fs = 100 Hz)
 
+#### Plotting example time-domain signal:
+![Time Domain Signals](results/time_domain_signals.png)
+
+#### Plotting frequency-domain signal:
 ![Frequency Spectrum](results/frequency_spectrum.png)
 
 
@@ -37,8 +62,6 @@ Implemented spatial filters:
 - [`laplacian_high.m`](laplacian_high.m) (High Laplacian)  
 
 These filters enhance spatial resolution and reduce noise.
-
-![Spatially Filtered Signal](results/spatial_filtered_signal.png)
 
 ### 3. Common Spatial Patterns (CSP)
 
@@ -79,9 +102,6 @@ Three classifiers are implemented:
 | KNN       | 77.94%   |
 | LDA       | 73.53%   |
 
-![Accuracy Comparison](results/accuracy_comparison.png)
-
-
 ## Key Insights
 - KNN achieved the best performance (77.94%), suggesting:
    - The feature space is locally well-structured
@@ -93,24 +113,3 @@ Three classifiers are implemented:
    - Limited feature dimensionality
    - No kernel tuning (baseline setup)
  
-## EEG Channel Layout
-![Channel Layout](results/channel_layout.png)
-
-## Time Domain Signals
-![Time Domain Signals](results/time_domain_signals.png)
-
-## How to Run
-### 1- Place dataset file:
-` data_set_IVa_al.mat `
-### 2- Open MATLAB
-### 3- Run:
-` run_pipeline `
-
-## Configuration
-Inside `run_pipeline.m`, you can modify:
-``` 
-config.frequency_band = 'mu';
-config.spatial_filter = 'CAR';
-config.num_csp_pairs = 1;
-config.train_ratio = 0.70;
-```
